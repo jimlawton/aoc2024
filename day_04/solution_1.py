@@ -139,25 +139,6 @@ def main():
 
     print(h_count + v_count + dr_count + dl_count)
 
-    xp_rows = transpose(rows)
-    xp_max_pad = len(rows) - 1
-
-    # Find diagonals, down.
-    padded_rows_right = []
-    for i in range(len(xp_rows)):
-        padded_rows_right.append("." * i + xp_rows[i] + "." * (xp_max_pad - i))
-    dd_count = count_vertical(padded_rows_right)
-    print(f"Diagonal, down: {dd_count}")
-
-    # Find diagonals, up.
-    padded_rows_left = []
-    for i in range(len(xp_rows)):
-        padded_rows_left.append("." * (xp_max_pad - i) + xp_rows[i] + "." * i)
-    du_count = count_vertical(padded_rows_left)
-    print(f"Diagonal, up: {du_count}")
-
-    print(h_count + v_count + dr_count + dl_count + dd_count + du_count)
-
 
 if __name__ == "__main__":
     main()
