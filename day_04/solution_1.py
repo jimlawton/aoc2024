@@ -77,8 +77,8 @@ def print_rows(rows):
 
 
 def transpose(rows):
-    xp_rows = list(zip(*rows))
-    return ["".join(x) for x in xp_rows]
+    xp_rows = ["".join(x) for x in list(zip(*rows))]
+    return xp_rows
 
 
 def count_horixontal(rows):
