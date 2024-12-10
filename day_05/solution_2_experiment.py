@@ -41,10 +41,29 @@ def main():
         print(f"{page}: {rule}")
     print()
 
-    # Start with the longest rule.
-    # Replace each page in the rule with the page plus its page rule list.
     # When all are replaced, remove all but the last instance of any page in the list.
     # The end result is a list of pages in the order they should appear.
+
+    modified_page_rules = page_rules.copy()
+    correct_order = []
+    lhs_pages = list(modified_page_rules.keys())
+    while True:
+        for lhs_page in lhs_pages:
+            if lhs_page not in list(
+                set(sorted({x for v in modified_page_rules.values() for x in v}))
+            ):
+                correct_order.append(lhs_page)
+                lhs_pages.remove(lhs_page)
+                del modified_page_rules[lhs_page]
+                break
+        if not lhs_pages:
+            break
+
+    print("Correct order:", correct_order)
+    sys.exit(0)
+
+    # Start with the longest rule.
+    # Replace each page in the rule with the page plus its page rule list.
     correct_order = []
     for page, rule in page_rules.items():
         # print(f"Page {page}, rule {rule}")
